@@ -9,3 +9,17 @@ x = ‘corso’; // testo racchiuso fra virgoletta singola
 x = true;
 x = null; // Null e’ valore speciale, significa senza valore
 x = undefined; // undefined e’ simile a null
+
+// uno dei tipi dato più importanti di javascript sono gli oggetti
+// gli oggetti sono una raccolta di coppie nome/valore, o una mappa string to value 
+var libro = {  				// oggetti sono racchiusi fra parentesi graffe
+  argomento: “Programmazione”, 	// la proprietà “argomento” ha valore “Programmazione”
+  pagine: 500 					// 
+};							// parentesi chiusa indica fine dell’oggetto
+
+
+// possiamo accedere alle proprietà con . o []
+libro.argomento 				// => “Programmazione”
+libro[“pagine”]				// => 500
+libro.autore = “Carlo”;			// crea una nuova proprietà per assegnazione
+libro.contenuto = {};			// {} un oggetto vuoto senza proprietà

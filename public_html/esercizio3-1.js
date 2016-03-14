@@ -1,6 +1,6 @@
-var x = 1;
+var x = 6;
 
-console.log(x != 0);
+console.log(x !== 0);
 
 console.log(x == true);
 

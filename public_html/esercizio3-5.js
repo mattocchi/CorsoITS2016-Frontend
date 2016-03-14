@@ -4,5 +4,9 @@ function stampa(testo) {
     console.log(testo);
 }
 
+//var stampa = function(testo) {
+//    console.log(testo);
+//}
+
 stampa(classe[0]);
-stampa(classe[classe.length - 1])
+stampa(classe[classe.length - 1]);

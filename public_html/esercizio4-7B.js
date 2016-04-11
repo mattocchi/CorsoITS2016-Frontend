@@ -2,7 +2,6 @@
 
 function numeroElementi(elenco) {
     try {
-        console.log(typeof elenco);
         if (elenco instanceof Array) {
             if (elenco.length === 0) {
                 return "Array Vuoto";
@@ -20,7 +19,10 @@ function numeroElementi(elenco) {
 }
 
 var primi = [2, 3, 5, 7];
-console.log(numeroElementi(primi));
+var res = numeroElementi(primi);
+console.log(res);
+
+
 
 console.log(numeroElementi([]));
 console.log(numeroElementi([1, 2]));
@@ -30,3 +32,9 @@ console.log(numeroElementi([1, 2]));
 console.log(numeroElementi());
 console.log(numeroElementi("abcde"));
 console.log(numeroElementi(10));
+
+
+
+            
+//        console.log(typeof elenco);
+//        if (elenco instanceof Array) {

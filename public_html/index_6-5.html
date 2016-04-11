@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <script>
+            function avvio() {
+                var spans = document.getElementsByTagName("span");
+                // per tutti gli elementi imposta testo con il tuo NOME
+                for (var i = 0; i < spans.length; i++) {
+                    var spanId = spans[i].id;
+                    var spanText = spans[i].textContent;
+                    console.log(spanId + '=' + spanText);
+                    spans[i].textContent = "Mirco";
+                }                
+            }
+        </script>
+    </head>
+    <body onload="avvio();">
+        <div>Esercizio 6-5</div>
+
+        <span id="span1">testo1 contenuto nello span1</span><br>
+        <span id="span2">testo2 contenuto nello span2</span><br>
+        <span id="span3">testo3 contenuto nello span3</span><br>
+        <span id="span4">testo4 contenuto nello span4</span><br>
+        <span id="span5">testo5 contenuto nello span5</span><br>
+
+    </body>
+</html>

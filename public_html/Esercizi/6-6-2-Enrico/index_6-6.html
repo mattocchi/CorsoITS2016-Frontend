@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Index 6.6</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script>
+            function avvio()  {
+                var inputNumUno = document.getElementById("num1");
+                var inputNumDue = document.getElementById("num2"); 
+            }
+            function somma(){
+                var inputNumUno = document.getElementById("num1");
+                var inputNumDue = document.getElementById("num2");
+                var num1 = parseInt(inputNumUno.value);
+                var num2 = parseInt(inputNumUno.value);
+                var input = num1 + num2;
+                console.log(input);
+                document.getElementById("somma").textContent = input;
+            }
+        </script>
+    </head>
+    <body onload="avvio();">
+        <div>Index 6.6</div>
+        <input id="num1" type="number" />
+        <input id="num2" type="number" />
+         <input type="button" onclick="somma();" value="Somma" />
+        <span id="somma"></span>
+    </body>
+</html>

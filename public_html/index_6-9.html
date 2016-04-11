@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <style>
+            .bordoRosso {
+                border: 2px solid red;
+            }
+            
+            .bordoGiallo {
+                border: 10px solid yellow;
+            }
+        </style>
+
+        <script>
+
+            var numeroClick = 0;
+            var colori = ['red', 'green', 'blue', 'gray']
+
+            function cambiaColore() {
+                numeroClick++;
+                var div = document.getElementById("testo");
+                /* modifica del CCS in-line */
+                div.style.backgroundColor = colori[numeroClick];
+                
+                /* modifica della classe CSS applicata */
+                div.className = 'bordoGiallo';
+            }
+        </script>
+    </head>
+    <body>
+        <div>Esercizio 6-9</div>
+
+        <input type="button" onclick="cambiaColore();" value="Esegui"/>
+
+        <p id="testo" style="background-color: yellow;" class="bordoRosso">
+            Cascading Style Sheets (CSS) è uno standard per specificare la rappresentazione visiva di documenti HTML. CSS permette ad un designer di specificare con precisione i caratteri, i colori, i margini, rientro, i bordi e anche la posizione degli elementi del documento.
+        </p>
+    </body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <script>
+            'use strict';
+            function avvio() {
+                var inputNome = document.getElementById("nome");
+                console.log(inputNome);
+                var nomeInserito = inputNome.value;
+                console.log("value=" + nomeInserito);
+            }
+            
+            function aggiornaTesto() {
+                var nomeInserito = document.getElementById("nome").value;
+                document.getElementById("testo").textContent = nomeInserito;
+            }
+        </script>
+    </head>
+
+
+    <body onload="avvio();">
+        <div>Esercizio 6-4</div>
+
+        <input id="nome" type="text" value="ciao" onkeyup="aggiornaTesto();"/>
+        <input type="button" onclick="aggiornaTesto();" value="Aggiorna"/>
+        <span id="testo"></span>
+    </body>
+</html>

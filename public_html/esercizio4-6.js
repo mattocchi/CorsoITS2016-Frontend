@@ -3,7 +3,7 @@
 var numeri = [];
 
 for (var i = 0; i < 10; i++) {
-    numeri[i] = i;
+    numeri[i] = i + 1;
 }
 
 var somma = 0;

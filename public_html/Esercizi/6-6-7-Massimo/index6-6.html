@@ -1,0 +1,30 @@
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <script>
+            function sommaTot() {
+                var span1 = document.getElementById("somma");
+                var numero1 = document.getElementById("num1").value;
+                var numero2 = document.getElementById("num1").value;
+                
+                var totale = parseInt(numero1) + parseInt(numero2);
+                
+                span1.textContent = totale;
+            }
+        </script>
+        
+    </head>
+    <body >
+        <div>Esercizio 6.6</div>
+        
+        <input id="num1" type="text" />
+        +
+        <input id="num2" type="text" />
+        <input type="button" value="=" onclick="sommaTot()">
+        <span id="somma"></span>
+        
+    </body>
+</html>

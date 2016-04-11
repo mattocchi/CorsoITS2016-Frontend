@@ -1,0 +1,29 @@
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script>
+            function avvio() {
+                var spans = document.getElementsByTagName("span");
+                for (var i = 0; i < spans.length; i++) {
+                    var spanId = spans[i].id;
+                    var spanText = spans[i].textContent;
+                    console.log(spanId + "=" + spanText);
+                    spans[i].textContent = "Prova";
+                }
+            }
+        </script>
+    </head>
+    <body>
+        <div>Esercizio 6.5</div>
+        <br>
+        <span id="span1">testo1</span><br>
+        <span id="span2">testo2</span><br>
+        <span id="span3">testo3</span><br>
+        <span id="span4">testo4</span><br>
+        <span id="span5">testo5</span><br>
+        <span id="span6">testo6</span><br>
+
+    </body>
+</html>

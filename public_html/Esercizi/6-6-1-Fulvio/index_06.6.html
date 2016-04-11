@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<!--
+
+-->
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script>
+            'use strict';
+            var n1 = 0;
+            var n2 = 0;
+            var ris = 0;
+
+            function calcolo() {
+                n1 = document.getElementById('numero1').value;
+                n2 = document.getElementById('numero2').value;
+                ris = parseInt(n1) + parseInt(n2);
+                document.getElementById('risultato').textContent = ris;
+            }
+
+        </script>
+    </head>
+
+    <body>
+        <div>Esercizio 6.6</div>
+        <input id="numero1" type="text" value="" /><br>
+        <input id="numero2" type="text" value="" /><br>
+        <input type="button" onclick="calcolo();" value="Calcola" /><br>
+        <span id="risultato"></span>
+    </body>
+</html>

@@ -1,7 +1,6 @@
 'use strict';
 
-var utente = {nome: 'Mario', cognome: 'Rossi', anno: 1990}
-for (var p in utente) {
-    console.log(p);
-    console.log(utente[p]);
+var persona = {nome: 'Mario', cognome: 'Rossi', anno: 1990}
+for (var nomeProprieta in persona) {
+    console.log(nomeProprieta + "=" + persona[nomeProprieta]);
 }

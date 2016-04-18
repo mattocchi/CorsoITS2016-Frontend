@@ -13,20 +13,30 @@ and open the template in the editor.
         <script>
             // Sintassi formale
             jQuery(document).ready(function () {
-                $("div.divDaFarScomparire").hide(2500);
+                $("#btnAggiungi").click(function () {
+                    console.log("test");
+                    var message = $("#messaggio").val();
+                    $("<span>").html(message + "<br/>").appendTo("#chat");
 
-                $("#pulsante1").click(function () {
-                    $("div.divDaFarScomparire").show(500);
+                    $("#messaggio").val("");
                 });
             });
         </script>
+        <style>
+            .chatStyle {
+                background-color: antiquewhite;
+                color: gray;
+            }
+        </style>
     </head>
     <body>
-        <div>Corso ITS - jQuery</div>
+        <div>Corso ITS - jQuery</div> 
 
-        <input id="pulsante1" type="button" value="Mostra testo" />
+        <p id="chat" class="chatStyle"></p>
+
+        <input id="messaggio" type="text" />
         
-        <div class="divDaFarScomparire">questo testo dentro DIV scompare lentamente</div>
-        <div class="divDaFarScomparire">questo testo dentro DIV2 scompare lentamente</div>
+        <input id="btnAggiungi" type="button" value="Aggiungi" />
+
     </body>
 </html>

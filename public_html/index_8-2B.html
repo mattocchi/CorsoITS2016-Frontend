@@ -13,20 +13,18 @@ and open the template in the editor.
         <script>
             // Sintassi formale
             jQuery(document).ready(function () {
-                $("div.divDaFarScomparire").hide(2500);
-
-                $("#pulsante1").click(function () {
-                    $("div.divDaFarScomparire").show(500);
-                });
+                $("#testo").keyup(function () {
+                    console.log("change");
+                    var testo = $("#testo").val();
+                    console.log("testo=" + testo);
+                    $("#numChar").text(testo.length);
+                })
             });
         </script>
     </head>
     <body>
-        <div>Corso ITS - jQuery</div>
-
-        <input id="pulsante1" type="button" value="Mostra testo" />
-        
-        <div class="divDaFarScomparire">questo testo dentro DIV scompare lentamente</div>
-        <div class="divDaFarScomparire">questo testo dentro DIV2 scompare lentamente</div>
+        <div>Corso ITS - jQuery</div> 
+        <textarea id="testo"></textarea>
+        <p>Num. Caratteratteri digitati: <span id="numChar"></span></p>
     </body>
 </html>

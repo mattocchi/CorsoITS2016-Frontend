@@ -13,20 +13,21 @@ and open the template in the editor.
         <script>
             // Sintassi formale
             jQuery(document).ready(function () {
-                $("div.divDaFarScomparire").hide(2500);
-
-                $("#pulsante1").click(function () {
-                    $("div.divDaFarScomparire").show(500);
-                });
+                var numP = $("p").length;
+                alert("nel documento ci sono " + numP + " paragrafi.");
+                
+                var testoParagrafo2 = $("#paragrafo2").text(); // non innerText
+                alert("il testo del secondo paragrafo e': " + testoParagrafo2);                
             });
         </script>
     </head>
     <body>
-        <div>Corso ITS - jQuery</div>
-
-        <input id="pulsante1" type="button" value="Mostra testo" />
+        <div>Corso ITS - jQuery</div> 
         
-        <div class="divDaFarScomparire">questo testo dentro DIV scompare lentamente</div>
-        <div class="divDaFarScomparire">questo testo dentro DIV2 scompare lentamente</div>
+        <h1>Titolo</h1>
+        
+        <p id="paragrafo3">paragrafo con testo tre</p>
+        <p id="paragrafo1">paragrafo con testo uno</p>
+        <p id="paragrafo2">paragrafo con testo due</p>
     </body>
 </html>

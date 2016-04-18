@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
+        <script>
+            // Sintassi formale
+            jQuery(document).ready(function () {
+                
+                var numP = $(".bordoRosso").length;
+                alert("nel documento ci sono " + numP + " paragrafi con class=bordoRosso");
+                
+            });
+        </script>
+        <style>
+            .bordoRosso {
+                border: 1px solid red;
+            }
+            
+            .bordoVerde {
+                border: 1px solid green;
+            }            
+        </style>
+    </head>
+    <body>
+        <div>Corso ITS - jQuery</div> 
+        <h1>Titolo</h1>
+        <p class="bordoRosso">paragrafo con testo uno</p>
+        <p class="bordoVerde">paragrafo con testo due</p>
+        <p class="bordoRosso">paragrafo con testo tre</p>
+        <p class="">paragrafo con testo quattro</p>
+    </body>
+</html>

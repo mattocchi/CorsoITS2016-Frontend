@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <script>
+            function somma() {
+
+                var addendo1 = document.getElementById("addendo1");
+                var addendo2 = document.getElementById("addendo2");
+                var risultato = document.getElementById("risultato");
+
+                var somma = parseInt(addendo1.value) + parseInt(addendo2.value);
+
+                risultato.textContent = somma;
+            }
+        </script>
+    </head>
+    <body>
+        <div>Esercizio 6-7</div>
+
+        <input id="addendo1" type="text"/> <!-- attenzione: permette inserimento di testo -->
+        <input id="addendo2" type="number"/>
+
+        <input type="button" onclick="somma();" value="Somma"/>
+
+        <span id="risultato"></span>
+    </body>
+</html>

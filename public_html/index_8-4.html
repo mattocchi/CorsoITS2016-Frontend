@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
+        <script>
+            // Sintassi formale
+            jQuery(document).ready(function () {
+                $("#btnSomma").click(function () {
+                    var addendo1 = $("#addendo1").val();
+                    var addendo2 = $("#addendo2").val();
+                    var somma = parseInt(addendo1) + parseInt(addendo2);
+                    $("#risultato").text(somma);
+                });
+            });
+        </script>
+        <style>
+            #risultato {
+                background-color: yellow;
+            }
+        </style>
+    </head>
+    <body>
+        <div>Corso ITS - jQuery</div> 
+
+        <input id="addendo1" type="number" />
+        <input id="addendo2" type="number" />
+
+        <input id="btnSomma" type="button" value="Somma" />
+
+        <p id="risultato"></p>
+    </body>
+</html>

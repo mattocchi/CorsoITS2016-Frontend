@@ -11,25 +11,38 @@ and open the template in the editor.
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
         <script>
-            // Sintassi formale
+            // Sintassi abbreviata
             jQuery(function() {
 
                 // assegna un numero ai paragrafi del documento fino a quello con id=ultimo
-                $("p").each(function (idx) {
-                    $(this).prepend(idx + ": "); // inserisce l'index all'inizio di ognuno
-                    if (this.id === "ultimo") return false; // fermati all'elemento paragrafo4
+                $("p").each(function (indice, elemento) {
+                    // elemento e' l'oggetto element del DOM
+                    console.log("elemento=" + elemento);
+                    // $(elemento) ritorna l'Oggetto jQuery
+                    console.log("$(elemento)=" + $(elemento));
+                    if (elemento.id === "ultimo") {
+                        return false;
+                    }
+                    console.log(indice);
+                    // inserisce l'indice all'inizio di ogni paragrafo
+                    $(elemento).prepend(indice + ": ");
                 });
 
             });
         </script>
     </head>
     <body>
-        <div>Corso ITS - jQuery</div> 
-        <h1>Titolo</h1>
-        <p id="paragrafo1">paragrafo con testo uno</p>
-        <p id="paragrafo2">paragrafo con testo due</p>
-        <p id="paragrafo3">paragrafo con testo tre</p>
-        <p id="ultimo">paragrafo con testo quattro e id ultimo </p>
-        <p id="paragrafo5">paragrafo con testo cinque</p>
+        <div>Corso ITS - jQuerytest
+            <p>paragrafo dentro div</p>
+        </div>
+        
+        <h1>Intestazione 1</h1>
+        <p>paragrafo con testo uno</p>
+        <p>paragrafo con testo due</p>
+        
+        <h1>Intestazione 2</h1>
+        <p id="ultimo">paragrafo con testo tre</p>
+        <p>paragrafo con testo quattro e id ultimo</p>
+        <p>paragrafo con testo cinque</p>        
     </body>
 </html>

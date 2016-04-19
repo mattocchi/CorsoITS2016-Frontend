@@ -13,25 +13,40 @@ and open the template in the editor.
         <script>
             // Sintassi formale
             jQuery(document).ready(function () {
+                var count = 0;
+                $("body > h1").each(function () {
+                    count++;
+                    var id = $(this).attr("id");
+                    var h1Text = $(this).text();
+                    var a = $("<a>").attr("href", "#" + id).text(h1Text);
+                    var nuovoIndice = $("<li>").append(a)
+                    $("#toc").append(nuovoIndice);
+                });
 
-                var numH1 = $("h1").length;
-                alert("nel documento ci sono " + numH1 + " elementi H1");
-
-                var numP = $("p").length;
-                alert("nel documento ci sono " + numP + " elementi P");
+                $("<p>").text(count + " intestazioni:").insertBefore("#toc");
             });
         </script>
+        <style>
+            #toc {
+                background-color: azure;
+            }
+        </style>
     </head>
     <body>
         <div>Corso ITS - jQuerytest</div>
-        
-        <h1>Intestazione 1</h1>
+
+        <ul id="toc"></ul>
+
+        <h1 id="intestazione1">Intestazione 1</h1>
         <p>paragrafo con testo uno</p>
         <p>paragrafo con testo due</p>
-        
-        <h1>Intestazione 2</h1>
+
+        <h1 id="intestazione2">Intestazione 2</h1>
         <p>paragrafo con testo tre</p>
         <p>paragrafo con testo quattro</p>
         <p>paragrafo con testo quattro</p>
+
+        <h1 id="intestazione3">Intestazione 3</h1>
+        <p>paragrafo con testo </p>    
     </body>
 </html>

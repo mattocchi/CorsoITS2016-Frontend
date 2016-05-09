@@ -11,7 +11,26 @@ and open the template in the editor.
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
         <script>
-            
+            jQuery(function () {
+                var oggetto = {nome: '', cognome: ''};
+                
+                var json = JSON.stringify(oggetto);
+                // scrivo stringa json nella textarea
+                $('#editorJson').val(json);
+                
+                $('#carica').click(function () {
+                    // carico la stringa dalla textarea
+                    var jsonModificato = $('#editorJson').val();
+                    var oggettoModificato = JSON.parse(jsonModificato);
+                    
+                    $('#oggetto').html('');
+                    for (var nomeProprieta in oggettoModificato) {
+                        var testoLi = "proprietà '" + nomeProprieta + "' = " + oggettoModificato[nomeProprieta];
+                        $("<li>").text(testoLi).appendTo('#oggetto');
+                        // $('#oggetto').append("<li>").text(testoLi);
+                    }
+                });
+            });
         </script>
 
     </head>

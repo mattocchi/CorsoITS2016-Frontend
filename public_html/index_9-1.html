@@ -11,7 +11,16 @@ and open the template in the editor.
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
         <script>
-            
+            jQuery(function () {
+                $('#selectProdotti').load('Esercizio9-1/opzioni.txt');
+                
+                $('#selectProdotti').change(function (event) {
+                   var targetEvento = $(event.target);
+                   console.log("il valore selezionato è cambiato:" + targetEvento.val());
+                   // codice per caricare la pagina html del prodotto selezionato
+                   $('#pannelloDettaglioProdotto').load("Esercizio9-1/" + targetEvento.val() + ".html");
+                });
+            });
         </script>
     </head>
     <body>
@@ -28,8 +37,7 @@ and open the template in the editor.
             <div>
                 <div id="pannelloSelezione">
                     <label for="selectProdotti">Prodotti Disponibili:</label>&nbsp;
-                    <select id="selectProdotti" name="bootStyle">
-                        
+                    <select id="selectProdotti" name="selectProdotti">
                     </select>
                 </div>
                 

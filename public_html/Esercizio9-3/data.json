@@ -1,0 +1,14 @@
+[
+    {
+        "codice": "PRODOTTO_A",
+        "descrizione": "Scarpone Alto"
+    },
+    {
+        "codice": "PRODOTTO_B",
+        "descrizione": "Scarpone Basso"
+    },
+    {
+        "codice": "PRODOTTO_C",
+        "descrizione": "Scarpone Impermeabile"
+    }
+]

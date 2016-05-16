@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
+        <script>
+            jQuery(function() {
+                $("#loading").hide();
+                
+                $(document).ajaxStart(function () {
+                    $("#loading").show(250);
+                    $("#carica").attr("disabled","disabled").toggleClass("red");
+                });
+                $(document).ajaxStop(function () {
+                    $("#loading").hide(250);
+                    $("#carica").removeAttr("disabled").toggleClass("red");
+                });                
+                
+                $("#carica").click(function () {
+                    $("#dati").hide(250).html("");
+                    $.getJSON("Esercizio9-3/data.json", function (data) {
+                        console.log("dati caricati dal server: " + data);
+                        var elementiLiDaAggiungere = [];
+                        $.each(data, function (indice, elemento) {
+                            elementiLiDaAggiungere.push("<li>"+elemento.descrizione+"</li>");
+                        });
+                        var htmlDaAggiungere = elementiLiDaAggiungere.join("");
+                        $("#dati").append(htmlDaAggiungere).show(1500);
+                    });                
+                });
+            });
+        </script>
+        <style>
+            #loading,.red {
+                background-color: red;
+            }
+        </style>
+    </head>
+    <body>
+        <div>Corso ITS - jQuerytest</div>
+        <div id="loading">Loading ...</div>
+        <button id="carica">Carica Elanco Prodotti Disponibili</button>
+        <hr/>
+        <ul id="dati"></ul>
+    </body>
+</html>

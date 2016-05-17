@@ -42,7 +42,6 @@ and open the template in the editor.
                 function aggiornaTabella() {
                     $("#lista>tbody").empty();
                     $.each(todos, function (posizione, elemento) {
-
                         /* creazione di un checkbox con attributo checked basato sullo stato dell'elemmento e attributo data personalizzato */
                         var checkbox = $('<input>').attr({type: "checkbox", checked: elemento.completato}).data("indice", posizione).click(function () {
                             /* gestore del click su checkbox, legge l'indice dell'elemento dall'attributo data */
@@ -53,18 +52,18 @@ and open the template in the editor.
                         });
 
                         /* creazione di uno span per la descrizione, aggiungiamo la classe se l'elemento è completato */
-                        var descrizione = $("<span>").text(elemento.descrizione);
+                        var spanDescrizione = $("<span>").text(elemento.descrizione);
 
-                        var colDesc = $("<td>").append(descrizione);
-                        var colCheck = $("<td>").append(checkbox);
-                        var riga = $("<tr>").append(colDesc).append(colCheck);
+                        var colonna1 = $("<td>").append(descrizione);
+                        var colonna2 = $("<td>").append(checkbox);
+                        var rigaTabella = $("<tr>").append(colonna1).append(colonna2);
 
                         if (elemento.completato) {
-                            descrizione.addClass("barrato");
-                            riga.addClass("danger");
+                            spanDescrizione.addClass("barrato");
+                            rigaTabella.addClass("danger");
                         }
 
-                        $("#lista>tbody").append(riga);
+                        $("#lista>tbody").append(rigaTabella);
                     });
                 }
             });
@@ -75,7 +74,7 @@ and open the template in the editor.
             <h1>Lista delle cose da fare</h1>
 
             <input id="nuovo" type="text" placeholder="specifica una cosa da fare" class="form-control"/>
-            <button id="add" class="btn btn-default">Aggiungi</button>
+            <button id="add" class="btn btn-primary">Aggiungi</button>
             
             <div class="row">
                 <div class="col-md-10 col-md-offset-1">    

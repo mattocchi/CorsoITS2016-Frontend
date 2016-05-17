@@ -54,7 +54,7 @@ and open the template in the editor.
                         /* creazione di uno span per la descrizione, aggiungiamo la classe se l'elemento è completato */
                         var spanDescrizione = $("<span>").text(elemento.descrizione);
 
-                        var colonna1 = $("<td>").append(descrizione);
+                        var colonna1 = $("<td>").append(spanDescrizione);
                         var colonna2 = $("<td>").append(checkbox);
                         var rigaTabella = $("<tr>").append(colonna1).append(colonna2);
 

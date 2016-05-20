@@ -49,7 +49,7 @@ and open the template in the editor.
 
                 function aggiungiRigaTabella(elemento, posizione) {
                     /* creazione di un checkbox con attributo checked basato sullo stato dell'elemmento e attributo data personalizzato */
-                    var checkbox = $('<input>').attr({type: "checkbox", checked: elemento.completato}).data("indice", posizione).click(function () {
+                    var checkbox = $('<input>').attr({type: "checkbox"}).data("indice", posizione).click(function () {
                         /* gestore del click su checkbox, legge l'indice dell'elemento dall'attributo data */
                         var indice = $(this).data("indice");
                         /* imposto come completato o non completato il todo nell'array */
@@ -68,11 +68,20 @@ and open the template in the editor.
                     if (elemento.completato) {
                         spanDescrizione.addClass("barrato");
                         rigaTabella.addClass("danger");
+                        checkbox.attr("checked", true);
                     }
 
                     rigaTabella.appendTo("#lista>tbody");
                     // .hide().fadeIn('fast');
                 }
+
+                $("#load").click(function () {
+                    $.getJSON("http://localhost:3000/todos", function (data) {
+                        console.log(data);
+                        todos = data;
+                        aggiornaTabella();
+                    });
+                });
             });
         </script>
     </head>
@@ -82,6 +91,7 @@ and open the template in the editor.
 
             <input id="nuovo" type="text" placeholder="specifica una cosa da fare" class="form-control"/>
             <button id="add" class="btn btn-primary">Aggiungi</button>
+            <button id="load" class="btn btn-default">Carica Dati</button>
 
             <div class="row">
                 <div class="col-md-10 col-md-offset-1">    

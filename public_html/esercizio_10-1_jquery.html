@@ -31,10 +31,25 @@ and open the template in the editor.
                     var testoInserito = $("#nuovo").val();
                     if (testoInserito) {
                         var nuovoTodo = {descrizione: testoInserito, completato: false};
-                        todos.push(nuovoTodo);
-                        $("#nuovo").val("");
-                        // aggiornaTabella();
-                        aggiungiRigaTabella(nuovoTodo, todos.length - 1)
+
+                        jQuery.ajax("http://localhost:3000/todos",
+                                {
+                                    type: "POST",
+                                    data: JSON.stringify(nuovoTodo),
+                                    contentType: "application/json",
+                                    dataType: "json",
+                                    jsonp: false,
+                                    success: function (data, textStatus) {
+                                        todos.push(data);
+                                        $("#nuovo").val("");
+                                        // aggiornaTabella();
+                                        aggiungiRigaTabella(nuovoTodo, todos.length - 1);
+                                    },
+                                    error: function (jqXHR, textStatus, errorThrown) {
+                                        window.alert(textStatus);
+                                    }
+                                });
+
                     } else {
                         alert('inserisci un testo valido');
                     }

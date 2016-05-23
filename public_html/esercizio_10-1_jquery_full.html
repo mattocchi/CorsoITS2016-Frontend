@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.3/jquery.min.js"></script>
+
+        <!-- Latest compiled and minified CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+        <!-- Optional theme -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+        <!-- Latest compiled and minified JavaScript -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>        
+
+        <style>
+            .barrato {
+                text-decoration: line-through;
+            }
+        </style>
+        <script>
+            "use strict";
+            var todos = [];
+            jQuery(function () {
+                var $loading = $('#loadingDiv').hide();
+                $(document).ajaxStart(function () {
+                    $loading.show();
+                }).ajaxStop(function () {
+                    $loading.hide();
+                });
+
+                $("#add").click(function () {
+                    var testoInserito = $("#nuovo").val();
+                    if (testoInserito) {
+                        var nuovoTodo = {descrizione: testoInserito, completato: false};
+
+                        jQuery.ajax({
+                            type: "POST",
+                            url: "http://localhost:3000/todo/",
+                            data: JSON.stringify(nuovoTodo),
+                            contentType: "application/json",
+                            dataType: "json",
+                            jsonp: false,
+                            success: function (data, textStatus, jqXHR) {
+                                if (data) {
+                                    todos.push(data);
+                                    $("#nuovo").val("");
+                                    // aggiornaTabella();
+                                    aggiungiRigaTabella(data, todos.length - 1);
+                                }
+                            },
+                            error: function (jqXHR, textStatus, errorThrown) {
+                                console.log(textStatus);
+                            }
+                        });
+
+                    } else {
+                        alert('inserisci un testo valido');
+                    }
+                });
+                function aggiornaTabella() {
+                    $("#lista>tbody").empty();
+                    $.each(todos, function (posizione, elemento) {
+                        aggiungiRigaTabella(elemento, posizione);
+                    });
+                }
+
+                function aggiungiRigaTabella(elemento, posizione) {
+                    /* creazione di un checkbox con attributo checked basato sullo stato dell'elemmento e attributo data personalizzato */
+                    var checkbox = $('<input>').attr({type: "checkbox"}).data("indice", posizione).click(function () {
+                        /* gestore del click su checkbox, legge l'indice dell'elemento dall'attributo data */
+                        var indice = $(this).data("indice");
+                        /* imposto come completato o non completato il todo nell'array */
+
+                        todos[indice].completato = !todos[indice].completato;
+                        var item = todos[indice];
+                        jQuery.ajax({
+                            type: "PUT",
+                            url: "http://localhost:3000/todo/" + item.id,
+                            data: JSON.stringify(item),
+                            contentType: "application/json",
+                            dataType: "json",
+                            jsonp: false,
+                            success: function (data, textStatus, jqXHR) {
+                                if (data) {
+                                    aggiornaTabella();
+                                }
+                            },
+                            error: function (jqXHR, textStatus, errorThrown) {
+                                console.log(textStatus);
+                            }
+                        });
+                    });
+
+                    var btnDelete = $('<button>').text("cancella").addClass("btn btn-xs btn-danger").data("indice", posizione).click(function () {
+                        var indice = $(this).data("indice");
+                        var item = todos[indice];
+                        jQuery.ajax({
+                            type: "DELETE",
+                            url: "http://localhost:3000/todo/" + item.id,
+                            data: JSON.stringify(item),
+                            contentType: "application/json",
+                            dataType: "json",
+                            jsonp: false,
+                            success: function (data, textStatus, jqXHR) {
+                                if (data) {
+                                    todos.splice(indice, 1)
+                                    aggiornaTabella();
+                                }
+                            },
+                            error: function (jqXHR, textStatus, errorThrown) {
+                                console.log(textStatus);
+                            }
+                        });
+                    });
+
+                    /* creazione di uno span per la descrizione, aggiungiamo la classe se l'elemento è completato */
+                    var spanDescrizione = $("<span>").text(elemento.descrizione);
+                    var rigaTabella = $("<tr>");
+                    var colonna1 = $("<td>").append(spanDescrizione).appendTo(rigaTabella);
+                    var colonna2 = $("<td>").append(checkbox).appendTo(rigaTabella);
+                    $("<td>").append(btnDelete).appendTo(rigaTabella);
+                    // rigaTabella.append(colonna1).append(colonna2);
+
+                    if (elemento.completato) {
+                        spanDescrizione.addClass("barrato");
+                        rigaTabella.addClass("danger");
+                        // jquery attr vs prop http://blog.jquery.com/2011/05/12/jquery-1-6-1-released/
+                        checkbox.attr('checked', true);
+                    }
+
+                    rigaTabella.appendTo("#lista>tbody").hide().fadeIn('slow');
+                }
+
+                function loadData() {
+                    console.log("loading data from server...");
+                    $.getJSON("http://localhost:3000/todo", function (data) {
+                        todos = data;
+                        aggiornaTabella();
+                    });
+                }
+                loadData();
+            });
+        </script>
+    </head>
+    <body>
+        <div class="container">
+
+            <h1>Lista delle cose da fare</h1>
+
+            <div class="row">
+                <div class="col-md-6 col-md-offset-3">
+                    <input id="nuovo" type="text" placeholder="specifica una cosa da fare" class="form-control"/>
+                    <button id="add" class="btn btn-primary">Aggiungi</button>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-10 col-md-offset-1">
+                    <table id="lista" class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>Descrizione</th>
+                                <th>Completato</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
